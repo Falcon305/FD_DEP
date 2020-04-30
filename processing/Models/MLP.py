@@ -6,8 +6,8 @@ from pandas import DataFrame
 from pandas import concat
 from pandas import read_csv
 from sklearn.metrics import mean_squared_error
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from keras.models import Sequential
+from keras.layers import Dense
 from matplotlib import pyplot
 from django.shortcuts import render, redirect
 # split a univariate dataset into train/test sets
