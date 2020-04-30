@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8pf)-$cf71f#w4atd*4ud*)k3-umd7h%b#+6t0dxp14w08pg_c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://stormy-retreat-58865.herokuapp.com/', '.herokuapp.com',]
 
