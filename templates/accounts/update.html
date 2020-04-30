@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} | FEATURE SELECTION {% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ <h2> FEATURE SELECTION </h2>
+    <form  method="post" enctype="multipart/form-data" action="modelSelection">
+        {% csrf_token %}
+
+        <input type="hidden" name="label" value="{{ label }}">
+        <input type="hidden" name="filename" value="{{ filename }}">
+        <div class="col text-center">
+      <button type="submit" class="btn btn-danger">Select Features</button>
+
+    </div>
+    </form>
+
+{% endblock %}

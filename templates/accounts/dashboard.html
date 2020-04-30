@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} | Dashbord {% endblock %}
+
+{% block content %}
+    <br>
+ <br>
+     <br>
+ <br>
+
+	<div class="col-md">
+		<h5>You have : {{total_projects}} Projects</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-md">
+				<tr>
+					<th>Title</th>
+					<th>Date Created</th>
+					<th>Dataset</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for project in projects %}
+					<tr>
+						<td>{{project.title}}</td>
+						<td>{{project.uploaded_at}}</td>
+						<td>{{project.dataset}}</td>
+						<td><a class="btn btn-sm btn-info" href="">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_project' project.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}

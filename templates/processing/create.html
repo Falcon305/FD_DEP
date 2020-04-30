@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} | Create Project {% endblock %}
+
+{% block content %}
+    <main class="page registration-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Create Project</h2>
+                    <p>Upload the dataset you that you want to work.</p>
+                </div>
+                {% include 'partials/_alerts.html' %}
+                <form method="POST" enctype="multipart/form-data" action="{% url 'load_dataset' %}">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label for="title">Project Title</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Project Description</label>
+                        <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+                    </div>
+                <div class="form-group">
+                  <label for="dataset">Dataset</label>
+                  <input type="file" name="dataset" required="" id="id_dataset">
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Create Project</button>
+              </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} | MLP{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="col text-center">
+<form id="myForm" method="post" enctype="multipart/form-data" action="{% url 'MLP'  %}">
+            {% csrf_token %}
+                <h2>  SELECTED MODEL: {{ model|upper }} </h2>
+                <br>
+                <h2>  Number of test data points: {{ ratio }} </h2>
+                <br>
+<br>
+                <input type="hidden" name="features" value="{{ features }}">
+                <input type="hidden" name="label" value="{{ label }}">
+                <input type="hidden" name="ratio" value="{{ ratio }}">
+                <input type="hidden" name="filename" value="{{ filename }}">
+
+               <br>
+<br>
+                    <button id="btnbtn" type="submit" class="btn btn-danger">Train Model</button>
+
+                </div>
+            </form>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+            <script>
+                $(document).ready(function() {
+                    $("#btnbtn").click(function() {
+                    // disable button
+                    $(this).prop("disabled", true);
+                    // add spinner to button
+                    $(this).html(
+                        `<span class="spinner-border spinner-border-sm" role="danger" aria-hidden="true"></span> Training...`
+                    );
+                    $("#myForm").submit();
+                    });
+                });
+                </script>
+                        
+{% endblock %}

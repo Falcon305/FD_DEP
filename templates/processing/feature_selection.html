@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} | FEATURE SELECTION {% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ <h2> FEATURE SELECTION </h2>
+    <form  method="post" enctype="multipart/form-data" action="{% url 'model_selection'  %}">
+        {% csrf_token %}
+        <table>
+            {% for c in columns %}
+            <tr>
+            <td><div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="{{ c }}" value"{{ c }}" name="features">
+                    <label class="custom-control-label" for="{{ c }}">{{ c }}</label>
+                    <br>
+                    <br>
+            </div></td>
+                
+    
+            </tr>
+            {% endfor %}
+            <br>
+        </table>
+        <br>
+        <br>
+        <h2> You have {{ entries }} Entries . Choose the number of test data points.</h2>
+        <br>
+        <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">#</span>
+        </div>
+            <input type="text" class="form-control" name="ratio" placeholder="Test data points" aria-label="Test data points" aria-describedby="basic-addon1">
+        </div>
+        <input type="hidden" name="label" value="{{ label }}">
+        <input type="hidden" name="filename" value="{{ filename }}">
+        <input type="hidden" name="date" value="{{ date }}">
+        <div class="col text-center">
+      <button type="submit" class="btn btn-danger">Submit</button>
+
+    </div>
+    </form>
+
+
+{% endblock %}

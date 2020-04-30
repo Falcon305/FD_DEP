@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %} | Create Project {% endblock %}
+
+{% block content %}
+ 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>{{ Error }}</h1>
+<h2 class="text-center">LABEL SELECTION FOR {{title}} 
+	<form method="POST" enctype="multipart/form-data" action="{% url 'view_data' %}">
+		{% csrf_token %}
+		<input type="hidden" name="loaded_data" value="{{ loaded_data }}">
+		<button type="submit" class="btn btn-info">View Dataset</button>
+	</form>
+</h2>
+<br>
+<br>
+<div class="box">
+    <div class="container">
+     	<div class="row">
+			 
+			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+					<div class="box-part text-center">
+                        <i class="fas fa-dumbbell"></i>
+                        <i class="fa fa-server fa-3x" aria-hidden="true"></i>
+                        
+						<div class="title">
+							<h4>Dataset size</h4>
+						</div>
+                        
+						<div class="text">
+							<span>{{size}}</span>
+						</div>
+					 </div>
+				</div>	 
+				
+				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+					<div class="box-part text-center">
+					    
+					    <i class="fa fa-calculator fa-3x" aria-hidden="true"></i>
+                    
+						<div class="title">
+							<h4>Entries</h4>
+						</div>
+                        
+						<div class="text">
+							<span>{{entries}}</span>
+						</div>
+					 </div>
+				</div>	 
+				
+				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+					<div class="box-part text-center">
+                        
+                        <i class="fa fa-file fa-3x" aria-hidden="true"></i>
+                        
+						<div class="title">
+							<h4>File name</h4>
+						</div>
+                        
+						<div class="text">
+							<span>{{filename}}</span>
+						</div>
+					 </div>
+				</div>	 
+		</div>		
+    </div>
+</div>
+<br>
+<form class="container" method="POST" enctype="multipart/form-data"  action="{% url 'preprocessing'  %}">
+{% csrf_token %}
+		<div class="form-group">
+    <label class="control-label col-md-12">Select Date column</label>
+    <div class="col-md-12">
+        <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-white" name="date" required>
+		
+            <option value="" selected>Select a Column</option>
+		
+			{% for c in columns %}
+            <option value="{{c}}" >{{c}}</option>
+			{% endfor %}
+        </select>
+    </div>
+</div>
+		<div class="form-group">
+    <label class="control-label col-md-12">Select Label</label>
+    <div class="col-md-12">
+        <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-white" name="label" required>
+            <option value="" selected>Select a Label</option>
+ 			{% for c in columns %}
+            	<option value={{c}} >{{c}}</option>
+			{% endfor %}
+        </select>
+    </div>
+</div>
+<input type="hidden" name="filename" value="{{ filename }}">
+<input type="hidden" name="entries" value="{{ entries }}">
+<div class="col text-center">
+      <button type="submit" class="btn btn-danger">Data PreProcessing</button>
+
+    </div>
+
+    </div>
+</form>
+<!--===============================================================================================-->
+	
+
+{% endblock %}

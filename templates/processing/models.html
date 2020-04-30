@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} | MODELS SELECTION {% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="col text-center">
+ <h2> MODELS SELECTION </h2>
+ <br>
+<br>
+ <h1>{{ Error }}</h1>
+<form  method="post" enctype="multipart/form-data" action="{% url 'model_exec'  %}">
+            {% csrf_token %}
+                <ul>
+                    <li>Deep Learning Models </li>
+                        <div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" value="mlp" name="model">
+  <label class="custom-control-label" for="customSwitch1">MLP</label>
+</div>
+                </ul>
+                <input type="hidden" name="features" value="{{ features }}">
+                <input type="hidden" name="label" value="{{ label }}">
+                <input type="hidden" name="ratio" value="{{ ratio }}">
+                <input type="hidden" name="filename" value="{{ filename }}">
+                <input type="hidden" name="date" value="{{ date }}">
+                <button type="submit">DONE</button>
+            </form>
+    </div>
+
+{% endblock %}

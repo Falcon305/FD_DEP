@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% load humanize %}
+
+{% block title %} | Welcome {% endblock %}
+
+{% block content %}
+<!-- Showcase -->
+{% include 'partials/_alerts.html' %}
+<main class="page landing-page">
+        <section class="clean-block clean-hero" style="background-image:url(&quot;assets/img/tech/image4.jpg&quot;);color:rgba(9, 162, 255, 0.85);">
+            <div class="text">
+                <h2>FoodLocker Prediction Platform.</h2>
+                <p>Upload, clean, analyse and make predictions on your data.</p><button class="btn btn-outline-light btn-lg" type="button">Learn More</button></div>
+        </section>
+    
+{% endblock %}
