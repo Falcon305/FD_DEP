@@ -138,18 +138,26 @@ def MLP(request):
             print(n_test)
             # define config
             config = [24, 500, 100, 100]
+            print(1)
             # grid search
             scores = repeat_evaluate(data, config, n_test)
+            print(2)
             # summarize scores
             score = summarize_scores('MLP', scores)
+            print(3)
 
             series_to_supervised(data, n_in=3, n_out=1)
+            print(4)
             train = data[:-n_test]
             test = data[-n_test:]
             model_fit(train,config)
+
             walk_forward_validation(data, n_test, config)
+            print(5)
             history = [x for x in train]
+            print(6)
             model_predict(model_fit(train, config), history, config)
+            print(7)
             md = "MLP"
             return render(request, 'models/result.html', {"md": md,                      
                                                               "score": score})
